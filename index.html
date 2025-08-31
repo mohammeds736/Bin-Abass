@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بن عباس - متجرك للأزياء والإكسسوارات</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e67e22;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* الترويسة */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-icons a {
+            color: white;
+            margin-left: 15px;
+            font-size: 18px;
+        }
+        
+        /* قسم الهيرو */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1200x600/2c3e50/FFFFFF?text=بن+عباس+للأزياء') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #d35400;
+        }
+        
+        /* الأقسام */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            font-size: 32px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+        
+        /* المنتجات */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .product-price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        /* الأقسام الرئيسية */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .category-card {
+            position: relative;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .category-overlay:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* التذييل */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin-left: 10px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* responsive design */
+        @media (max-width: 768px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الترويسة -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">بن <span>عباس</span></a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">الملابس</a></li>
+                    <li><a href="#">الإكسسوارات</a></li>
+                    <li><a href="#">الأحذية</a></li>
+                    <li><a href="#">عروض خاصة</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم الهيرو -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>أحدث صيحات الموضة من بن عباس</h1>
+            <p>اكتشف أحدث collections من الملابس والإكسسوارات والأحذية</p>
+            <a href="#" class="btn">تسوق الآن</a>
+        </div>
+    </section>
+
+    <!-- الأقسام الرئيسية -->
+    <section class="container">
+        <h2 class="section-title">تسوق حسب القسم</h2>
+        <div class="categories">
+            <a href="#" class="category-card">
+                <img src="https://placehold.co/300x200/3498db/FFFFFF?text=الملابس" alt="الملابس">
+                <div class="category-overlay">الملابس</div>
+            </a>
+            <a href="#" class="category-card">
+                <img src="https://placehold.co/300x200/e74c3c/FFFFFF?text=الإكسسوارات" alt="الإكسسوارات">
+                <div class="category-overlay">الإكسسوارات</div>
+            </a>
+            <a href="#" class="category-card">
+                <img src="https://placehold.co/300x200/2ecc71/FFFFFF?text=الأحذية" alt="الأحذية">
+                <div class="category-overlay">الأحذية</div>
+            </a>
+            <a href="#" class="category-card">
+                <img src="https://placehold.co/300x200/9b59b6/FFFFFF?text=العروض+الخاصة" alt="العروض الخاصة">
+                <div class="category-overlay">العروض الخاصة</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- المنتجات المميزة -->
+    <section class="container">
+        <h2 class="section-title">منتجاتنا المميزة</h2>
+        <div class="products">
+            <!-- منتج 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/300x300/3498db/FFFFFF?text=قميص+رجالي" alt="قميص رجالي">
+                </div>
+                <div class="product-info">
+                    <h3>قميص رجالي أنيق</h3>
+                    <div class="product-price">120 ر.س</div>
+                    <a href="#" class="btn">أضف إلى السلة</a>
+                </div>
+            </div>
+            
+            <!-- منتج 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/300x300/e74c3c/FFFFFF?text=فستان+نسائي" alt="فستان نسائي">
+                </div>
+                <div class="product-info">
+                    <h3>فستان سهرة أنيق</h3>
+                    <div class="product-price">280 ر.س</div>
+                    <a href="#" class="btn">أضف إلى السلة</a>
+                </div>
+            </div>
+            
+            <!-- منتج 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/300x300/2ecc71/FFFFFF?text=حذاء+رياضي" alt="حذاء رياضي">
+                </div>
+                <div class="product-info">
+                    <h3>حذاء رياضي مريح</h3>
+                    <div class="product-price">190 ر.س</div>
+                    <a href="#" class="btn">أضف إلى السلة</a>
+                </div>
+            </div>
+            
+            <!-- منتج 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://placehold.co/300x300/9b59b6/FFFFFF?text=ساعة+يد" alt="ساعة يد">
+                </div>
+                <div class="product-info">
+                    <h3>ساعة يد فاخرة</h3>
+                    <div class="product-price">350 ر.س</div>
+                    <a href="#" class="btn">أضف إلى السلة</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>عن بن عباس</h3>
+                <p>متجر بن عباس هو وجهتك الأولى لجميع احتياجاتك من الملابس والإكسسوارات والأحذية بجودة عالية وأسعار مناسبة.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">المنتجات</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>معلومات الاتصال</h3>
+                <p>اليمن محافظة تعز صبر نجد مشىرعة ،   </p>
+                <p>الهاتف:‏‪+967 775 393 973‬‏ </p>
+                <p>البريد الإلكتروني: info@binabbas.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>تابعنا على</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-snapchat"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>جميع الحقوق محفوظة &copy; 2023 بن عباس</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
